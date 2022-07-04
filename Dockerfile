@@ -1,7 +1,5 @@
-FROM islasgeci/base:0.7.0
+FROM islasgeci/base:latest
 COPY . /workdir
-RUN apt update && apt install --yes \
-    gnuplot
 RUN pip install --upgrade pip && pip install \
     black \
     codecov \
@@ -10,8 +8,4 @@ RUN pip install --upgrade pip && pip install \
     mypy \
     pylint \
     pytest \
-    pytest-cov \
-    sklearn \
-    tensorflow
-RUN Rscript -e "install.packages(c('covr', 'devtools', 'DT', 'lintr', 'roxygen2', 'styler', 'testthat', 'vdiffr'), repos='http://cran.rstudio.com')"
-
+    pytest-cov
