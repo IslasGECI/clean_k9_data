@@ -52,10 +52,37 @@ mutants: install
 	mutmut run --paths-to-mutate ${module}
 	mutmut run --paths-to-mutate src
 
-init: install tests
+init: setup tests
+	git config --global --add safe.directory /workdir
+	git config --global user.name "Ciencia de Datos • GECI"
+	git config --global user.email "ciencia.datos@islas.org.mx"
 
-install: clean
+install:
 	pip install --editable .
+
+setup: clean install
 
 tests:
 	pytest --verbose
+
+transform_xlsx_to_csv:
+	in2csv --sheet "Esfuerzo " $(ls IG_ESFUERZO*) > aux.csv
+	csvcut -c "1-9" -K 3 aux.csv > esfuezo_k9.csv 
+
+red: format
+	pytest --verbose \
+	&& git restore tests/*.py \
+	|| (git add tests/*.py && git commit -m "🛑🧪 Fail tests")
+	chmod g+w -R .
+
+green: format
+	pytest --verbose \
+	&& (git add ${module}/*.py tests/*.py && git commit -m "✅ Pass tests") \
+	|| git restore ${module}/*.py
+	chmod g+w -R .
+
+refactor: format
+	pytest --verbose \
+	&& (git add ${module}/*.py tests/*.py && git commit -m "♻️  Refactor") \
+	|| git restore ${module}/*.py tests/*.py
+	chmod g+w -R .
