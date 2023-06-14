@@ -1,3 +1,9 @@
+transform_xlsx_to_csv:
+	python src/transform_xlsx_to_csv.py
+
+capitalize_revision:
+	python src/capitalize_revision
+
 module = clean_k9_data
 
 define lint
@@ -61,13 +67,15 @@ install:
 	pip install --editable .
 
 setup: clean install
+	shellspec --init
 
-tests:
+tests: tests_python tests_spec
+
+tests_python:
 	pytest --verbose
 
-transform_xlsx_to_csv:
-	in2csv --sheet "Esfuerzo " $(ls IG_ESFUERZO*) > aux.csv
-	csvcut -c "1-9" -K 3 aux.csv > esfuezo_k9.csv 
+tests_spec:
+	shellspec
 
 red: format
 	pytest --verbose \
