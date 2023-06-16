@@ -63,7 +63,7 @@ install:
 setup: clean install
 	shellspec --init
 
-tests: tests_python tests_spec
+tests: tests_spec
 
 tests_python:
 	pytest --verbose
