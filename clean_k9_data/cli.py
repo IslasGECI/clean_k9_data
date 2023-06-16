@@ -2,9 +2,8 @@ import os
 import typer
 
 
-app = typer.Typer(
-    help="Tools to clean k9 data for the eradication Guadalupe Island project"
-)
+app = typer.Typer(help="Tools to clean k9 data for the eradication Guadalupe Island project")
+
 
 @app.command()
 def transform_xlsx():
