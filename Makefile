@@ -1,9 +1,3 @@
-transform_xlsx_to_csv:
-	python src/transform_xlsx_to_csv.py
-
-capitalize_revision:
-	python src/capitalize_revision
-
 module = clean_k9_data
 
 define lint

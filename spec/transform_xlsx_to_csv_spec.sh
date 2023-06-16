@@ -6,8 +6,7 @@ Describe 'Map of active and inactivated traps'
     BeforeAll 'cleanup'
     AfterAll 'cleanup'
     It 'generates file'
-      When run make transform_xlsx_to_csv
-      The stdout should include 'python src/transform_xlsx_to_csv.py'
+      When run python src/transform_xlsx_to_csv.py esfuerzo
       The stderr should include 'packages/agate/utils.py:285: UnnamedColumnWarning: Column 1'
       The file /workdir/esfuerzo_k9.csv should be exist
     End
