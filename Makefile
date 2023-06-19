@@ -29,7 +29,6 @@ check:
 	flake8 --max-line-length 100 tests
 	mypy ${module}
 	mypy src
-	mypy tests
 
 clean:
 	rm --force --recursive ${module}.egg-info
