@@ -38,6 +38,7 @@ clean:
 	rm --force .mutmut-cache
 	rm --force NAMESPACE
 	rm --force coverage.xml
+	rm --force *.csv
 
 coverage: install
 	pytest --cov=${module} --cov-report=term-missing --verbose
