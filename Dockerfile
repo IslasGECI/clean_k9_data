@@ -8,5 +8,5 @@ RUN pip install --upgrade pip && pip install \
     mypy \
     pylint \
     pytest \
-    pytest-cov \
-    typer
+    pytest-cov
+RUN make install
