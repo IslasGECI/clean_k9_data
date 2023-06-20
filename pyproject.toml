@@ -12,6 +12,7 @@ module = "clean_k9_data"
 requires = [
     "pandas-stubs",
     "pandas",
+    "typer",
 ]
 requires-python=">=3.8"
 
