@@ -22,13 +22,10 @@ endef
 
 check:
 	black --check --line-length 100 ${module}
-	black --check --line-length 100 src
 	black --check --line-length 100 tests
 	flake8 --max-line-length 100 ${module}
-	flake8 --max-line-length 100 src
 	flake8 --max-line-length 100 tests
 	mypy ${module}
-	mypy src
 
 clean:
 	rm --force --recursive ${module}.egg-info
@@ -45,12 +42,10 @@ coverage: install
 
 format:
 	black --line-length 100 ${module}
-	black --line-length 100 src
 	black --line-length 100 tests
 
 mutants: install
 	mutmut run --paths-to-mutate ${module}
-	mutmut run --paths-to-mutate src
 
 init: setup tests
 	git config --global --add safe.directory /workdir
