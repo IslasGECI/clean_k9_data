@@ -6,12 +6,12 @@ Describe 'Map of active and inactivated traps'
     BeforeAll 'cleanup'
     AfterAll 'cleanup'
     It 'generates file'
-      When run python src/transform_xlsx_to_csv.py esfuerzo
+      When run clean_k9_data esfuerzo
       The stderr should include 'packages/agate/utils.py:285: UnnamedColumnWarning: Column 1'
       The file /workdir/esfuerzo_k9.csv should be exist
     End
     It 'With explicit file name'
-      When run python src/transform_xlsx_to_csv.py esfuerzo --file=tests/data/IG_ESFUERZO_K9_03JUL2022.xlsx --hoja="Esfuerzo"
+      When run clean_k9_data esfuerzo --file=tests/data/IG_ESFUERZO_K9_03JUL2022.xlsx --hoja="Esfuerzo"
       The stderr should include 'packages/agate/utils.py:285: UnnamedColumnWarning: Column 1'
       The file /workdir/esfuerzo_k9.csv should be exist
     End
@@ -20,7 +20,7 @@ Describe 'Map of active and inactivated traps'
       The stdout should not include '3ee5f608acb5af6cd'
     End
     It 'The sheet Marcajes'
-      When run python src/transform_xlsx_to_csv.py marcaje --hoja="Marcajes "
+      When run clean_k9_data marcaje --hoja="Marcajes "
       The stderr should include 'packages/agate/utils.py:285: UnnamedColumnWarning: Column 1'
       The file /workdir/marcajes_k9.csv should be exist
     End
