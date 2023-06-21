@@ -53,7 +53,7 @@ init: setup tests
 	git config --global user.email "ciencia.datos@islas.org.mx"
 
 install:
-	pip install .
+	pip install --editable .
 
 setup: clean install
 	shellspec --init
