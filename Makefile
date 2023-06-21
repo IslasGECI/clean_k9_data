@@ -45,7 +45,7 @@ format:
 	black --line-length 100 tests
 
 mutants: install
-	mutmut run --paths-to-mutate ${module}
+	mutmut run --paths-to-mutate ${module} --runner "shellspec --shell bash spec"
 
 init: setup tests
 	git config --global --add safe.directory /workdir
