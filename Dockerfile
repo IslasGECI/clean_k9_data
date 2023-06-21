@@ -10,4 +10,3 @@ RUN pip install --upgrade pip && pip install \
     pytest \
     pytest-cov
 RUN make install
-ENTRYPOINT ["clean_k9_data"]
