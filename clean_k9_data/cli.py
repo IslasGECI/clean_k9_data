@@ -25,5 +25,12 @@ def marcaje(hoja: str = "Marcajes ", file: str = "tests/data/IG_ESFUERZO_28MAY20
 
 
 @app.command()
+def extra(hoja: str = "Revision_Campo ", file: str = "tests/data/IG_CAMARA_TRAMPA_EXTRA_05NOV2023.xls"):
+    extract_sheets(hoja, file)
+    command = "csvcut -c '1-11' aux.csv > camaras_extra_revision_campo.csv"
+    os.system(command)
+
+
+@app.command()
 def version():
     print("hola")
