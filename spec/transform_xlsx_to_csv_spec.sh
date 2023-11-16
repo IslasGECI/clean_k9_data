@@ -37,12 +37,24 @@ Describe 'Map of active and inactivated traps'
       The file /workdir/camaras_extra_revision_campo.csv should be exist
     End
     It 'With explicit file name: check hash'
-      When call md5sum /workdir/camaras_extra_revision_campo.csv 
-      The stdout should not include 'ce3031c548062609cd8ea20a70be2b0c'
+      When call wc --lines /workdir/camaras_extra_revision_campo.csv 
+      The stdout should include '161'
     End
     It 'Check columns: Extra revision campo'
       When call head /workdir/camaras_extra_revision_campo.csv -n 1 
       The stdout should include 'ID_camara,Zona,Coordenada_Este,Coordenada_Norte,Fecha_revision,Responsable,Revision,Estado_camara,Estado_memoria,Porcentaje_bateria,Observaciones'
+    End
+    It 'With explicit file name: revision memoria'
+      When run clean_k9_data extra --file=tests/data/IG_CAMARA_TRAMPA_EXTRA_05NOV2023.xls --hoja="Revision_Memoria"
+      The file /workdir/camaras_extra_revision_memoria.csv should be exist
+    End
+    It 'With explicit file name: check hash'
+      When call wc --lines /workdir/camaras_extra_revision_memoria.csv 
+      The stdout should include '194'
+    End
+    It 'Check columns: Extra revision memoria'
+      When call head /workdir/camaras_extra_revision_memoria.csv -n 1 
+      The stdout should include 'ID camara,RESPONSABLE,Fotos capturadas,Fecha foto captura,Hora captura,Cantidad individuos capturados,Observaciones'
     End
   End
 End
