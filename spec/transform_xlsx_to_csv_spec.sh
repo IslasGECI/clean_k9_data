@@ -29,4 +29,20 @@ Describe 'Map of active and inactivated traps'
       The stdout should include 'Fecha,Manejador,Nombre_k9,ID-punto,Coordenada_Este,Coordenada_Norte,Altitud,Zona,Tipo_de_rastro,Clave muestra,Sitio_o_lugar,Observaciones'
     End
   End
+  Describe 'Tranform xls to csv: camera traps'
+    BeforeAll 'cleanup'
+    AfterAll 'cleanup'
+    It 'With explicit file name'
+      When run clean_k9_data extra --file=tests/data/IG_CAMARA_TRAMPA_EXTRA_05NOV2023.xls --hoja="Revision_Campo"
+      The file /workdir/camaras_extra_revision_campo.csv should be exist
+    End
+    It 'With explicit file name: check hash'
+      When call md5sum /workdir/camaras_extra_revision_campo.csv 
+      The stdout should not include 'ce3031c548062609cd8ea20a70be2b0c'
+    End
+    It 'Check columns: Extra revision campo'
+      When call head /workdir/camaras_extra_revision_campo.csv -n 1 
+      The stdout should include 'ID_camara,Zona,Coordenada_Este,Coordenada_Norte,Fecha_revision,Responsable,Revision,Estado_camara,Estado_memoria,Porcentaje_bateria,Observaciones'
+    End
+  End
 End
