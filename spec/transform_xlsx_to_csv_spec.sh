@@ -34,7 +34,7 @@ Describe 'Map of active and inactivated traps'
  #   AfterAll 'cleanup'
     It 'With explicit file name'
       When run clean_k9_data extra \
-        file=tests/data/IG_CAMARA_TRAMPA_EXTRA_05NOV2023.xls \
+        tests/data/IG_CAMARA_TRAMPA_EXTRA_05NOV2023.xls \
         --salida-campo=/workdir/camaras_extra_revision_campo.csv \
         --salida-memoria=/workdir/camaras_extra_revision_memoria.csv
       The file /workdir/camaras_extra_revision_campo.csv should be exist
@@ -49,9 +49,9 @@ Describe 'Map of active and inactivated traps'
     End
     It 'With explicit file name: revision memoria'
       When run clean_k9_data extra \
+        tests/data/IG_CAMARA_TRAMPA_EXTRA_19NOV2023.xlsx \
         --salida-campo=/workdir/camaras_extra_revision_campo.csv \
         --salida-memoria=/workdir/camaras_extra_revision_memoria.csv \
-        file=tests/data/IG_CAMARA_TRAMPA_EXTRA_19NOV2023.xlsx \
         --hoja="Revision_Memoria"
       The stderr should include 'UnnamedColumnWarning'
       The file /workdir/camaras_extra_revision_memoria.csv should be exist
