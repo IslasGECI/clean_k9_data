@@ -31,11 +31,12 @@ Describe 'Map of active and inactivated traps'
   End
   Describe 'Tranform xls to csv: camera traps'
     BeforeAll 'cleanup'
-    AfterAll 'cleanup'
+ #   AfterAll 'cleanup'
     It 'With explicit file name'
       When run clean_k9_data extra \
-        --file=tests/data/IG_CAMARA_TRAMPA_EXTRA_05NOV2023.xls \
-        --salida-campo=/workdir/camaras_extra_revision_campo.csv
+        --salida-campo=/workdir/camaras_extra_revision_campo.csv \
+        --salida-memoria=/workdir/camaras_extra_revision_memoria.csv \
+        --file=tests/data/IG_CAMARA_TRAMPA_EXTRA_05NOV2023.xls
       The file /workdir/camaras_extra_revision_campo.csv should be exist
     End
     It 'With explicit file name: check hash'
@@ -47,7 +48,11 @@ Describe 'Map of active and inactivated traps'
       The stdout should include 'ID_camara,Zona,Coordenada_Este,Coordenada_Norte,Fecha_revision,Responsable,Revision,Estado_camara,Estado_memoria,Porcentaje_bateria,Observaciones'
     End
     It 'With explicit file name: revision memoria'
-      When run clean_k9_data extra --file=tests/data/IG_CAMARA_TRAMPA_EXTRA_19NOV2023.xlsx --hoja="Revision_Memoria"
+      When run clean_k9_data extra \
+        --salida-campo=/workdir/camaras_extra_revision_campo.csv \
+        --salida-memoria=/workdir/camaras_extra_revision_memoria.csv \
+        --file=tests/data/IG_CAMARA_TRAMPA_EXTRA_19NOV2023.xlsx \
+        --hoja="Revision_Memoria"
       The stderr should include 'UnnamedColumnWarning'
       The file /workdir/camaras_extra_revision_memoria.csv should be exist
     End
