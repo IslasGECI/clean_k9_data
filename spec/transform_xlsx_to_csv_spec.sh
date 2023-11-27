@@ -33,7 +33,7 @@ Describe 'Map of active and inactivated traps'
     BeforeAll 'cleanup'
     AfterAll 'cleanup'
     It 'With explicit file name'
-      When run clean_k9_data extra --file=tests/data/IG_CAMARA_TRAMPA_EXTRA_05NOV2023.xls --hoja="Revision_Campo"
+      When run clean_k9_data extra --file=tests/data/IG_CAMARA_TRAMPA_EXTRA_05NOV2023.xls
       The file /workdir/camaras_extra_revision_campo.csv should be exist
     End
     It 'With explicit file name: check hash'
