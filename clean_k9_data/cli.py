@@ -30,7 +30,7 @@ def marcaje(hoja: str = "Marcajes ", file: str = "tests/data/IG_ESFUERZO_28MAY20
 
 @app.command()
 def extra(
-    hoja: str = "Revision_Campo ", file: str = "tests/data/IG_CAMARA_TRAMPA_EXTRA_05NOV2023.xls"
+    hoja: str = "Revision_Campo", file: str = "tests/data/IG_CAMARA_TRAMPA_EXTRA_05NOV2023.xls"
 ):
     extract_sheets(hoja, file)
     command = COMMAND_FOR_EXTRAS[hoja]
