@@ -46,11 +46,11 @@ def extra(
     file: Annotated[Optional[str], typer.Argument()] = None,
 ):
     extract_sheets(hoja, file)
-    command = COMMAND_FOR_EXTRAS[hoja](salida_campo)
+    command = csvcut_campo_command_string(salida_campo)
     os.system(command)
     hoja = "Revision_Memoria"
     extract_sheets(hoja, file)
-    command = COMMAND_FOR_EXTRAS[hoja](salida_memoria)
+    command = csvcut_memoria_command_string(salida_memoria)
     os.system(command)
 
 
