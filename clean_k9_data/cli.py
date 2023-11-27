@@ -1,5 +1,7 @@
 import os
 import typer
+from typing import Optional
+from typing_extensions import Annotated
 
 
 def extract_sheets(hoja: str = "Esfuerzo ", file: str = "tests/data/IG_ESFUERZO_28MAY2023.xls"):
@@ -30,7 +32,10 @@ def marcaje(hoja: str = "Marcajes ", file: str = "tests/data/IG_ESFUERZO_28MAY20
 
 @app.command()
 def extra(
-    hoja: str = "Revision_Campo", file: str = "tests/data/IG_CAMARA_TRAMPA_EXTRA_05NOV2023.xls"
+    salida_campo: str = None,
+    salida_memoria: str = None,
+    hoja: str = "Revision_Campo",
+    file: Annotated[Optional[str], typer.Argument()] = None,
 ):
     extract_sheets(hoja, file)
     command = COMMAND_FOR_EXTRAS[hoja]
