@@ -9,9 +9,17 @@ def extract_sheets(hoja: str = "Esfuerzo ", file: str = "tests/data/IG_ESFUERZO_
     os.system(command)
 
 
+def csvcut_campo_command_string(output_path):
+    return f"csvcut -c '1-11' aux.csv > {output_path}"
+
+
+def csvcut_memoria_command_string(output_path):
+    return f"csvcut -c '1-2,5-9' -x aux.csv > {output_path}"
+
+
 COMMAND_FOR_EXTRAS = {
-    "Revision_Campo": "csvcut -c '1-11' aux.csv > camaras_extra_revision_campo.csv",
-    "Revision_Memoria": "csvcut -c '1-2,5-9' -x aux.csv > camaras_extra_revision_memoria.csv",
+    "Revision_Campo": csvcut_campo_command_string,
+    "Revision_Memoria": csvcut_memoria_command_string,
 }
 app = typer.Typer(help="Tools to clean k9 data for the eradication Guadalupe Island project")
 
@@ -38,7 +46,11 @@ def extra(
     file: Annotated[Optional[str], typer.Argument()] = None,
 ):
     extract_sheets(hoja, file)
-    command = COMMAND_FOR_EXTRAS[hoja]
+    command = COMMAND_FOR_EXTRAS[hoja](salida_campo)
+    os.system(command)
+    hoja = "Revision_Memoria"
+    extract_sheets(hoja, file)
+    command = COMMAND_FOR_EXTRAS[hoja](salida_memoria)
     os.system(command)
 
 
