@@ -40,14 +40,21 @@ def extra(
     salida_memoria: str = None,
     file: Annotated[Optional[str], typer.Argument()] = None,
 ):
-    hoja = "Revision_Campo"
-    extract_sheets(hoja, file)
-    command = csvcut_campo_command_string(salida_campo)
-    os.system(command)
+    extract_campo_sheet(salida_campo, file)
+    extract_memoria_sheet(salida_memoria, file)
 
+
+def extract_memoria_sheet(salida_memoria, file):
     hoja = "Revision_Memoria"
     extract_sheets(hoja, file)
     command = csvcut_memoria_command_string(salida_memoria)
+    os.system(command)
+
+
+def extract_campo_sheet(salida_campo, file):
+    hoja = "Revision_Campo"
+    extract_sheets(hoja, file)
+    command = csvcut_campo_command_string(salida_campo)
     os.system(command)
 
 
