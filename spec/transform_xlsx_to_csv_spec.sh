@@ -51,8 +51,7 @@ Describe 'Map of active and inactivated traps'
       When run clean_k9_data extra \
         tests/data/IG_CAMARA_TRAMPA_EXTRA_19NOV2023.xlsx \
         --salida-campo=/workdir/camaras_extra_revision_campo.csv \
-        --salida-memoria=/workdir/camaras_extra_revision_memoria.csv \
-        --hoja="Revision_Memoria"
+        --salida-memoria=/workdir/camaras_extra_revision_memoria.csv
       The stderr should include 'UnnamedColumnWarning'
       The file /workdir/camaras_extra_revision_memoria.csv should be exist
     End

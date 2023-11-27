@@ -38,7 +38,6 @@ def marcaje(hoja: str = "Marcajes ", file: str = "tests/data/IG_ESFUERZO_28MAY20
 def extra(
     salida_campo: str = None,
     salida_memoria: str = None,
-    hoja: str = None,
     file: Annotated[Optional[str], typer.Argument()] = None,
 ):
     hoja = "Revision_Campo"
