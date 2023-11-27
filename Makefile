@@ -67,19 +67,19 @@ tests_spec:
 	shellspec
 
 red: format
-	pytest --verbose \
-	&& git restore tests/*.py \
-	|| (git add tests/*.py && git commit -m "🛑🧪 Fail tests")
+	shellspec \
+	&& git restore spec/*spec.sh \
+	|| (git add spec/*spec.sh && git commit -m "🛑🧪 Fail tests")
 	chmod g+w -R .
 
 green: format
-	pytest --verbose \
-	&& (git add ${module}/*.py tests/*.py && git commit -m "✅ Pass tests") \
+	shellspec \
+	&& (git add ${module}/*.py && git commit -m "✅ Pass tests") \
 	|| git restore ${module}/*.py
 	chmod g+w -R .
 
 refactor: format
-	pytest --verbose \
-	&& (git add ${module}/*.py tests/*.py && git commit -m "♻️  Refactor") \
-	|| git restore ${module}/*.py tests/*.py
+	shellspec \
+	&& (git add ${module}/*.py spec/*spec.sh && git commit -m "♻️  Refactor") \
+	|| git restore ${module}/*.py spec/*spec.sh
 	chmod g+w -R .
