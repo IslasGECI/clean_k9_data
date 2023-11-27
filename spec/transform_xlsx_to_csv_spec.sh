@@ -35,16 +35,16 @@ Describe 'Map of active and inactivated traps'
     It 'With explicit file name'
       When run clean_k9_data extra \
         tests/data/IG_CAMARA_TRAMPA_EXTRA_05NOV2023.xls \
-        --salida-campo=/workdir/camaras_extra_revision_campo.csv \
+        --salida-campo=/workdir/camaras_extra_revision_campo_for_tests.csv \
         --salida-memoria=/workdir/camaras_extra_revision_memoria.csv
-      The file /workdir/camaras_extra_revision_campo.csv should be exist
+      The file /workdir/camaras_extra_revision_campo_for_tests.csv should be exist
     End
     It 'With explicit file name: check hash'
-      When call wc --lines /workdir/camaras_extra_revision_campo.csv 
+      When call wc --lines /workdir/camaras_extra_revision_campo_for_tests.csv 
       The stdout should include '161'
     End
     It 'Check columns: Extra revision campo'
-      When call head /workdir/camaras_extra_revision_campo.csv -n 1 
+      When call head /workdir/camaras_extra_revision_campo_for_tests.csv -n 1 
       The stdout should include 'ID_camara,Zona,Coordenada_Este,Coordenada_Norte,Fecha_revision,Responsable,Revision,Estado_camara,Estado_memoria,Porcentaje_bateria,Observaciones'
     End
     It 'With explicit file name: revision memoria'
