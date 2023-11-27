@@ -17,10 +17,6 @@ def csvcut_memoria_command_string(output_path):
     return f"csvcut -c '1-2,5-9' -x aux.csv > {output_path}"
 
 
-COMMAND_FOR_EXTRAS = {
-    "Revision_Campo": csvcut_campo_command_string,
-    "Revision_Memoria": csvcut_memoria_command_string,
-}
 app = typer.Typer(help="Tools to clean k9 data for the eradication Guadalupe Island project")
 
 
@@ -45,9 +41,11 @@ def extra(
     hoja: str = "Revision_Campo",
     file: Annotated[Optional[str], typer.Argument()] = None,
 ):
+    hoja = "Revision_Campo"
     extract_sheets(hoja, file)
     command = csvcut_campo_command_string(salida_campo)
     os.system(command)
+
     hoja = "Revision_Memoria"
     extract_sheets(hoja, file)
     command = csvcut_memoria_command_string(salida_memoria)
