@@ -31,7 +31,7 @@ Describe 'Map of active and inactivated traps'
   End
   Describe 'Tranform xls to csv: camera traps'
     BeforeAll 'cleanup'
- #   AfterAll 'cleanup'
+    AfterAll 'cleanup'
     It 'With explicit file name'
       When run clean_k9_data extra \
         tests/data/IG_CAMARA_TRAMPA_EXTRA_05NOV2023.xls \
