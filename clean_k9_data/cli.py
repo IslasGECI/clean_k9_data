@@ -36,8 +36,8 @@ def marcaje(hoja: str = "Marcajes ", file: str = "tests/data/IG_ESFUERZO_28MAY20
 
 @app.command()
 def extra(
-    salida_campo: str = None,
-    salida_memoria: str = None,
+    salida_campo: str = "",
+    salida_memoria: str = "",
     file: Annotated[Optional[str], typer.Argument()] = None,
 ):
     extract_campo_sheet(salida_campo, file)
