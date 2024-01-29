@@ -49,15 +49,14 @@ Describe 'Map of active and inactivated traps'
     End
     It 'With explicit file name: revision memoria'
       When run clean_k9_data extra \
-        tests/data/IG_CAMARA_TRAMPA_EXTRA_19NOV2023.xlsx \
+        tests/data/IG_CAMARAS_TRAMPA_24ENE2024.xlsx \
         --salida-campo=/workdir/camaras_extra_revision_campo.csv \
         --salida-memoria=/workdir/camaras_extra_revision_memoria.csv
-      The stderr should include 'UnnamedColumnWarning'
       The file /workdir/camaras_extra_revision_memoria.csv should be exist
     End
     It 'Remove empty rows'
       When call wc --lines /workdir/camaras_extra_revision_memoria.csv 
-      The stdout should include '172'
+      The stdout should include '194'
     End
     It 'Include NA'
       When run cat /workdir/camaras_extra_revision_memoria.csv
@@ -65,7 +64,7 @@ Describe 'Map of active and inactivated traps'
     End
     It 'Check columns: Extra revision memoria'
       When call head /workdir/camaras_extra_revision_memoria.csv -n 1 
-      The stdout should include 'ID camara,RESPONSABLE,Fotos capturadas,Fecha foto captura,Hora captura,Cantidad individuos capturados,Observaciones'
+      The stdout should include 'ID camara,RESPONSABLE,Fotos capturadas,Fecha foto captura,Hora captura,Cantidad individuos capturados,Observaciones,Lineas'
     End
   End
 End
