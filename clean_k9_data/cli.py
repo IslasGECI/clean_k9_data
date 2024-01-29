@@ -10,7 +10,7 @@ def extract_sheets(hoja: str = "Esfuerzo ", file: str = "tests/data/IG_ESFUERZO_
 
 
 def csvcut_campo_command_string(output_path):
-    return f"csvcut -c '1-12' aux.csv > {output_path}"
+    return f"csvcut -c '1-13' aux.csv > {output_path}"
 
 
 def csvcut_memoria_command_string(output_path):
