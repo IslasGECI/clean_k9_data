@@ -12,6 +12,8 @@ jobs:
       run: docker build --tag islasgeci/clean_k9_data:latest --tag islasgeci/clean_k9_data:${github_sha:0:4} .
     - name: Verifica el formato
       run: docker run islasgeci/clean_k9_data:latest make check
+    - name: Corre las pruebas
+      run: docker run islasgeci/clean_k9_data:latest make tests
     - name: Docker log-in
       env:
         docker_username: ${{ secrets.docker_username }}
