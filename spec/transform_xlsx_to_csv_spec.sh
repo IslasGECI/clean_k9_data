@@ -45,7 +45,7 @@ Describe 'Map of active and inactivated traps'
     End
     It 'Check columns: Extra revision campo'
       When call head /workdir/camaras_extra_revision_campo_for_tests.csv -n 1 
-      The stdout should include 'ID_camara,Zona,Coordenada_Este,Coordenada_Norte,Ultima_revision,Fecha_revision,Responsable,Revision,Estado_camara,Estado_memoria,Porcentaje_bateria,Observaciones'
+      The stdout should include 'ID_camara,Zona,Coordenada_Este,Coordenada_Norte,Ultima_revision,Fecha_revision,Responsable,Revision,Estado_camara,Estado_memoria,Porcentaje_bateria,Observaciones,Lineas'
     End
     It 'With explicit file name: revision memoria'
       When run clean_k9_data extra \
