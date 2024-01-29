@@ -14,7 +14,7 @@ def csvcut_campo_command_string(output_path):
 
 
 def csvcut_memoria_command_string(output_path):
-    return f"csvcut -c '1-2,5-9' -x aux.csv > {output_path}"
+    return f"csvcut -c '1-2,5-10' -x aux.csv > {output_path}"
 
 
 app = typer.Typer(help="Tools to clean k9 data for the eradication Guadalupe Island project")
